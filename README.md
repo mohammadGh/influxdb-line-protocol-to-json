@@ -1,4 +1,4 @@
-# influxdb-line-protocol-to-json
+# InfluxDB Line Protocol to JSON Converter
 This library is useful for decoding `InfluxDB Line Protocol` to a `Map` instance or `JSON` string.
 The InfluxDB Line Protocol is as follow:
 ```
