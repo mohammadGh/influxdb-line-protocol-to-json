@@ -6,7 +6,7 @@ The InfluxDB Line Protocol is as follow:
 ```    
 for more information refer to [InfluxDB Line Protocol documentation](https://docs.influxdata.com/influxdb/v1.6/write_protocols/line_protocol_reference)
 
-The library converts the `Line Protocol` data to the following JSON structure:
+The follwoing example show how library converts the `Line Protocol` data to the JSON structure:
 ```json
 [
    {
@@ -64,10 +64,28 @@ The library converts the `Line Protocol` data to the following JSON structure:
    .
 ]
 ```
-For using this library get dependency with `go tool` and do as follwo:
-```go
-func TestLinesToJson(t *testing.T) {
-	var line = `
+## Install
+Just add the `github/mohammadGh/influxdb-line-protocol-to-json` to the import section of your `Go` file. Then run the follwing command:
+```
+go get -d .
+```
+## Usage
+Just add the package name into the import section and the related methods:
+package main
+```
+import (
+	"fmt"
+	inlfuxjson "github/mohammadGh/influxdb-line-protocol-to-json"
+)
+
+var metrics = [1]string{"win_cpu"}
+
+type Agent struct {
+	db string
+}
+
+func main() {
+	var lines = `
 win_cpu,host=DESKTOP-RLUGATJ,instance=3,objectname=Processor Percent_DPC_Time=0,Percent_Idle_Time=99.50546264648438,Percent_Interrupt_Time=0,Percent_Privileged_Time=0,Percent_Processor_Time=2.4173243045806885,Percent_User_Time=0 1533206781000000000
 win_cpu,host=DESKTOP-RLUGATJ,instance=4,objectname=Processor Percent_DPC_Time=0,Percent_Idle_Time=98.90975952148438,Percent_Interrupt_Time=0,Percent_Privileged_Time=0,Percent_Processor_Time=0.8683928847312927,Percent_User_Time=0 1533206781000000000
 win_cpu,host=DESKTOP-RLUGATJ,instance=7,objectname=Processor Percent_DPC_Time=0,Percent_Idle_Time=99.34410858154297,Percent_Interrupt_Time=0,Percent_Privileged_Time=0,Percent_Processor_Time=0.8683928847312927,Percent_User_Time=0 1533206781000000000
@@ -76,7 +94,7 @@ win_mem,host=DESKTOP-RLUGATJ,objectname=Memory Available_Bytes=14458130432,Cache
 win_net,host=DESKTOP-RLUGATJ,instance=D-Link\ DWA-525\ Wireless\ N\ 150\ Desktop\ Adapter[rev.A2],objectname=Network\ Interface Bytes_Received_persec=0,Bytes_Sent_persec=0,Packets_Outbound_Discarded=0,Packets_Outbound_Errors=0,Packets_Received_Discarded=0,Packets_Received_Errors=0,Packets_Received_persec=0,Packets_Sent_persec=0 1533206781000000000
 win_net,host=DESKTOP-RLUGATJ,instance=Teredo\ Tunneling\ Pseudo-Interface,objectname=Network\ Interface Bytes_Received_persec=0,Bytes_Sent_persec=0,Packets_Outbound_Discarded=0,Packets_Outbound_Errors=0,Packets_Received_Discarded=0,Packets_Received_Errors=0,Packets_Received_persec=0,Packets_Sent_persec=0 1533206781000000000`
 	
-	fmt.Println(LinesToJson(line))
+	fmt.Println(inlfuxjson.LinesToJson(line))
 }
 
 ```
