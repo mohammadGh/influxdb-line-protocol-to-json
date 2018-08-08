@@ -71,18 +71,13 @@ go get -d .
 ```
 ## Usage
 Just add the package name into the import section and the related methods:
-package main
 ```
+package main
+
 import (
 	"fmt"
 	inlfuxjson "github/mohammadGh/influxdb-line-protocol-to-json"
 )
-
-var metrics = [1]string{"win_cpu"}
-
-type Agent struct {
-	db string
-}
 
 func main() {
 	var lines = `
