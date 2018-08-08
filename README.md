@@ -71,7 +71,7 @@ go get -d .
 ```
 ## Usage
 Just add the package name into the import section and the related methods:
-```
+```go
 package main
 
 import (
